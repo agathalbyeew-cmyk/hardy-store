@@ -5,27 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hardy Store • MM2</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
-    
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
     :root {
       --pink: #FF4ECD;
       --purple: #B04CFF;
       --blue: #7B5CFF;
       --cyan: #3CA6FF;
-      --orange: #FF9A3C;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #1a0033, #2a004d);
+      background: linear-gradient(135deg, #1a0033 0%, #2a004d 100%);
       color: white;
-      overflow-x: hidden;
       min-height: 100vh;
+      overflow-x: hidden;
     }
 
     .header {
-      background: rgba(0,0,0,0.7);
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(12px);
       padding: 15px 40px;
       display: flex;
       align-items: center;
@@ -33,263 +33,221 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,78,205,0.2);
     }
 
     .logo {
-      font-size: 42px;
+      font-size: 38px;
       font-weight: 700;
       background: linear-gradient(90deg, var(--pink), #ff8a00);
       -webkit-background-clip: text;
-      color: transparent;
-      text-shadow: 0 0 30px rgba(255,78,205,0.6);
+      -webkit-text-fill-color: transparent;
     }
 
-    .mascot {
-      position: absolute;
-      top: -60px;
-      right: 80px;
-      width: 220px;
-      z-index: 10;
+    .nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 18px;
+      font-weight: 500;
+      transition: color 0.3s;
     }
 
-    .main-container {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-
-    .hero {
-      display: flex;
-      gap: 40px;
-      align-items: center;
-      background: rgba(255,255,255,0.05);
-      border-radius: 20px;
-      padding: 40px;
-      margin-bottom: 30px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero h1 {
-      font-size: 48px;
-      line-height: 1.1;
-    }
-
-    .section {
-      background: rgba(255,255,255,0.05);
-      border-radius: 20px;
-      padding: 25px;
-      margin-bottom: 30px;
-    }
-
-    .destaques {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 20px;
-    }
-
-    .item-card {
-      background: rgba(0,0,0,0.4);
-      border-radius: 16px;
-      padding: 15px;
-      text-align: center;
-      transition: all 0.3s;
-      position: relative;
-    }
-
-    .item-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 0 30px rgba(255,78,205,0.4);
-    }
-
-    .item-card img {
-      width: 100%;
-      height: 180px;
-      object-fit: contain;
-      filter: drop-shadow(0 10px 20px rgba(0,0,0,0.6));
-    }
-
-    .price {
-      font-size: 22px;
-      font-weight: 700;
+    .nav a:hover, .nav a.active {
       color: var(--pink);
     }
 
-    .add-btn {
+    .nav button {
       background: linear-gradient(90deg, var(--pink), var(--purple));
       border: none;
-      padding: 10px 20px;
+      padding: 10px 24px;
       border-radius: 50px;
       color: white;
       font-weight: 600;
       cursor: pointer;
-      margin-top: 10px;
-      width: 100%;
     }
 
-    .carrinho {
-      position: fixed;
-      right: 20px;
-      top: 100px;
-      width: 320px;
-      background: rgba(20,0,40,0.95);
-      border-radius: 20px;
-      padding: 20px;
-      box-shadow: 0 0 40px rgba(0,0,0,0.8);
-      z-index: 200;
-    }
-
-    .item-carrinho {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 15px;
-      padding-bottom: 15px;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-    }
-
-    .total {
-      font-size: 24px;
-      font-weight: 700;
+    .hero {
       text-align: center;
-      margin: 20px 0;
-    }
-
-    .btn-finalizar {
-      background: linear-gradient(90deg, #00ff88, #00cc66);
-      color: black;
-      font-weight: 700;
-      padding: 15px;
-      border-radius: 50px;
-      width: 100%;
-      border: none;
-      font-size: 18px;
-      cursor: pointer;
-    }
-
-    .oferta {
-      background: linear-gradient(135deg, #ff3366, #ff6600);
-      padding: 20px;
-      border-radius: 20px;
-      text-align: center;
+      padding: 100px 20px 80px;
       position: relative;
     }
 
-    .timer {
-      font-size: 28px;
+    .welcome {
+      display: inline-block;
+      background: rgba(255,78,205,0.15);
+      border: 2px solid var(--pink);
+      padding: 8px 25px;
+      border-radius: 50px;
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: 62px;
+      line-height: 1.05;
       font-weight: 700;
-      letter-spacing: 4px;
+      margin-bottom: 20px;
     }
 
-    .nav-sidebar {
-      background: rgba(255,255,255,0.05);
-      border-radius: 16px;
-      padding: 15px;
-      position: sticky;
-      top: 100px;
+    .hero h1 span {
+      background: linear-gradient(90deg, #FF4ECD, #7B5CFF, #3CA6FF);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
-    .nav-sidebar a {
-      display: block;
-      padding: 12px 20px;
-      color: white;
+    .hero p {
+      font-size: 22px;
+      max-width: 800px;
+      margin: 0 auto 40px;
+      opacity: 0.95;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 16px 36px;
+      font-size: 18px;
+      font-weight: 600;
+      border-radius: 50px;
+      cursor: pointer;
       text-decoration: none;
-      border-radius: 12px;
-      margin-bottom: 8px;
+      display: inline-block;
+      transition: all 0.3s;
     }
 
-    .nav-sidebar a:hover, .nav-sidebar a.active {
-      background: var(--purple);
+    .btn-primary {
+      background: linear-gradient(90deg, var(--pink), var(--purple));
+      color: white;
+      border: none;
     }
+
+    .btn-primary:hover {
+      transform: scale(1.05);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: white;
+      border: 2px solid var(--cyan);
+    }
+
+    .btn-secondary:hover {
+      background: var(--cyan);
+      color: black;
+    }
+
+    .carrinho-icon {
+      position: relative;
+      font-size: 28px;
+      cursor: pointer;
+    }
+
+    .cart-count {
+      position: absolute;
+      top: -8px;
+      right: -10px;
+      background: var(--pink);
+      color: white;
+      font-size: 14px;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
+
+    /* Carrinho lateral */
+    #carrinho {
+      position: fixed;
+      top: 0;
+      right: -400px;
+      width: 380px;
+      height: 100vh;
+      background: rgba(20, 5, 40, 0.98);
+      transition: right 0.4s ease;
+      z-index: 1000;
+      padding: 30px 25px;
+      overflow-y: auto;
+    }
+
+    #carrinho.open { right: 0; }
   </style>
 </head>
 <body>
 
+  <!-- HEADER -->
   <div class="header">
     <div class="logo">Hardy Store</div>
-    <div style="display:flex; gap:15px; align-items:center;">
-      <input type="text" placeholder="Buscar item..." style="padding:10px 20px; border-radius:50px; border:none; width:300px; background:rgba(255,255,255,0.1); color:white;">
-      <div style="position:relative; cursor:pointer;" onclick="toggleCarrinho()">
-        🛒 <span id="cart-count" style="position:absolute; top:-8px; right:-8px; background:var(--pink); color:white; border-radius:50%; width:20px; height:20px; font-size:12px; display:flex; align-items:center; justify-content:center;">3</span>
+    
+    <div class="nav">
+      <a href="#" class="active">Início</a>
+      <a href="#">Loja</a>
+      <a href="#">Sobre</a>
+      <a href="#">Termos</a>
+      <a href="#">Contato</a>
+    </div>
+
+    <div style="display:flex; align-items:center; gap:25px;">
+      <div class="carrinho-icon" onclick="toggleCarrinho()">
+        🛒 <span class="cart-count" id="cart-count">0</span>
       </div>
+      <button onclick="alert('Em breve!')">Entrar</button>
     </div>
   </div>
 
-  <div class="main-container">
-    <div class="hero">
-      <div>
-        <h1>OS MELHORES ITENS DE<br>MURDER MYSTERY 2<br>COM OS MELHORES PREÇOS!</h1>
-        <p style="margin:20px 0; font-size:20px;">Entrega rápida ⚡ • Atendimento confiável • Preços competitivos</p>
-      </div>
-      <img src="https://i.imgur.com/9zXvK8p.png" alt="Mascote" class="mascot" style="width:280px;"> <!-- substitua pela imagem real da garota se quiser -->
+  <!-- HERO -->
+  <div class="hero">
+    <div class="welcome">✨ Bem-vindo à nossa lojinha ❤️</div>
+    
+    <h1>
+      Os melhores itens de<br>
+      <span>Murder Mystery 2</span><br>
+      com os melhores preços
+    </h1>
+    
+    <p>
+      Itens raros, godlys, ancients e sets exclusivos. Entrega em até 24h,<br>
+      suporte dedicado e a maior segurança em cada negociação.
+    </p>
+
+    <div class="buttons">
+      <a href="#" class="btn btn-primary" onclick="verProdutos()">Ver produtos →</a>
+      <a href="https://discord.gg/" target="_blank" class="btn btn-secondary">Entrar no Discord</a>
     </div>
+  </div>
 
-    <!-- DESTAQUES -->
-    <div class="section">
-      <h2 style="margin-bottom:20px; color:var(--pink);">✨ DESTAQUES</h2>
-      <div class="destaques">
-        <!-- Item 1 -->
-        <div class="item-card">
-          <img src="https://static.wikia.nocookie.net/murder-mystery-2/images/0/0f/Heartblade.png" alt="Heartblade">
-          <h3>Heartblade</h3>
-          <p class="price">R$ 249,90</p>
-          <p>Godly • Estoque: 12</p>
-          <button class="add-btn" onclick="addToCart('Heartblade', 249.90)">Adicionar</button>
-        </div>
-
-        <!-- Item 2 -->
-        <div class="item-card">
-          <img src="https://static.wikia.nocookie.net/murder-mystery-2/images/9/9f/Sugar.png" alt="Sugar">
-          <h3>Sugar</h3>
-          <p class="price">R$ 189,90</p>
-          <p>Legendário • Estoque: 15</p>
-          <button class="add-btn" onclick="addToCart('Sugar', 189.90)">Adicionar</button>
-        </div>
-
-        <!-- Item 3 -->
-        <div class="item-card">
-          <img src="https://static.wikia.nocookie.net/murder-mystery-2/images/0/0b/Batwing.png" alt="Batwing">
-          <h3>Batwing</h3>
-          <p class="price">R$ 219,90</p>
-          <p>Godly • Estoque: 6</p>
-          <button class="add-btn" onclick="addToCart('Batwing', 219.90)">Adicionar</button>
-        </div>
-
-        <!-- Item 4 -->
-        <div class="item-card">
-          <img src="https://static.wikia.nocookie.net/murder-mystery-2/images/5/5f/Elderwood_Scythe.png" alt="Elderwood Scythe">
-          <h3>Elderwood Scythe</h3>
-          <p class="price">R$ 189,90</p>
-          <p>Godly • Estoque: 8</p>
-          <button class="add-btn" onclick="addToCart('Elderwood Scythe', 189.90)">Adicionar</button>
-        </div>
-      </div>
+  <!-- CARRINHO -->
+  <div id="carrinho">
+    <h2 style="margin-bottom:25px;">🛒 Seu Carrinho</h2>
+    <div id="cart-items" style="min-height:300px;"></div>
+    
+    <div style="margin-top:30px; font-size:24px; text-align:center;">
+      Total: R$ <span id="cart-total">0,00</span>
     </div>
-
-    <!-- OFERTA ESPECIAL -->
-    <div class="section oferta">
-      <h2>🔥 OFERTA ESPECIAL - TEMPO LIMITADO!</h2>
-      <h3>Icebreaker <span style="text-decoration:line-through; opacity:0.7;">R$ 199,90</span> <strong>R$ 139,90</strong></h3>
-      <div class="timer" id="timer">02 : 14 : 37</div>
-      <button class="add-btn" style="margin-top:15px;" onclick="addToCart('Icebreaker', 139.90)">Pegar Oferta!</button>
-    </div>
-
-    <!-- CARRINHO (fixo) -->
-    <div id="carrinho" class="carrinho" style="display:none;">
-      <h3>Carrinho (<span id="cart-count2">0</span>)</h3>
-      <div id="cart-items"></div>
-      <div class="total">Total: R$ <span id="cart-total">0,00</span></div>
-      <button class="btn-finalizar" onclick="finalizarPedido()">Finalizar Pedido</button>
-    </div>
+    
+    <button onclick="finalizarPedido()" style="width:100%; margin-top:20px; padding:18px; background:linear-gradient(90deg,#00ff88,#00cc66); border:none; border-radius:50px; font-size:18px; font-weight:700; color:black;">
+      Finalizar Pedido
+    </button>
+    
+    <button onclick="toggleCarrinho()" style="width:100%; margin-top:10px; padding:14px; background:transparent; border:2px solid #666; color:white; border-radius:50px;">
+      Fechar
+    </button>
   </div>
 
   <script>
     let cart = [];
 
     function addToCart(name, price) {
-      cart.push({name, price});
+      cart.push({ name, price });
       updateCart();
-      alert(`${name} adicionado ao carrinho! 💖`);
+      alert(`${name} foi adicionado ao carrinho! 💖`);
     }
 
     function updateCart() {
@@ -297,10 +255,10 @@
       itemsDiv.innerHTML = '';
       let total = 0;
 
-      cart.forEach((item, index) => {
+      cart.forEach((item, i) => {
         total += item.price;
         const div = document.createElement('div');
-        div.className = 'item-carrinho';
+        div.style.cssText = 'display:flex; justify-content:space-between; padding:12px 0; border-bottom:1px solid rgba(255,255,255,0.1);';
         div.innerHTML = `
           <span>${item.name}</span>
           <span>R$ ${item.price.toFixed(2)}</span>
@@ -310,40 +268,31 @@
 
       document.getElementById('cart-total').textContent = total.toFixed(2);
       document.getElementById('cart-count').textContent = cart.length;
-      document.getElementById('cart-count2').textContent = cart.length;
     }
 
     function toggleCarrinho() {
-      const carrinho = document.getElementById('carrinho');
-      carrinho.style.display = carrinho.style.display === 'none' ? 'block' : 'none';
+      const cartEl = document.getElementById('carrinho');
+      cartEl.classList.toggle('open');
     }
 
     function finalizarPedido() {
       if (cart.length === 0) {
-        alert("Carrinho vazio!");
+        alert("Seu carrinho está vazio!");
         return;
       }
-      alert("Pedido finalizado com sucesso! 🎉\nEm breve entraremos em contato via WhatsApp.");
+      alert("✅ Pedido finalizado com sucesso!\n\nEntraremos em contato via WhatsApp ou Discord em breve.");
       cart = [];
       updateCart();
       toggleCarrinho();
     }
 
-    // Timer da oferta
-    function startTimer() {
-      let time = 2*3600 + 14*60 + 37; // 02:14:37
-      setInterval(() => {
-        time--;
-        const h = Math.floor(time / 3600).toString().padStart(2,'0');
-        const m = Math.floor((time % 3600)/60).toString().padStart(2,'0');
-        const s = (time % 60).toString().padStart(2,'0');
-        document.getElementById('timer').textContent = `${h} : ${m} : ${s}`;
-      }, 1000);
+    function verProdutos() {
+      alert("Em breve a seção completa de produtos estará aqui!\n\nPor enquanto você pode adicionar itens manualmente no código (se quiser, me avise que eu adiciono vários godlys).");
+      // Aqui você pode fazer window.location = "#produtos" depois que criar a seção
     }
 
-    // Iniciar tudo
+    // Inicia o carrinho vazio
     window.onload = () => {
-      startTimer();
       updateCart();
     };
   </script>
