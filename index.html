@@ -1,300 +1,33 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hardy Store • MM2</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+<!-- PRODUTOS -->
+<section id="produtos" style="padding:60px 40px;">
+  <h2 style="font-size:32px; margin-bottom:30px;">🔥 Destaques</h2>
 
-    :root {
-      --pink: #FF4ECD;
-      --purple: #B04CFF;
-      --blue: #7B5CFF;
-      --cyan: #3CA6FF;
-    }
+  <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:25px;">
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #1a0033 0%, #2a004d 100%);
-      color: white;
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
-
-    .header {
-      background: rgba(0, 0, 0, 0.75);
-      backdrop-filter: blur(12px);
-      padding: 15px 40px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      border-bottom: 1px solid rgba(255,78,205,0.2);
-    }
-
-    .logo {
-      font-size: 38px;
-      font-weight: 700;
-      background: linear-gradient(90deg, var(--pink), #ff8a00);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .nav a {
-      color: white;
-      text-decoration: none;
-      margin: 0 18px;
-      font-weight: 500;
-      transition: color 0.3s;
-    }
-
-    .nav a:hover, .nav a.active {
-      color: var(--pink);
-    }
-
-    .nav button {
-      background: linear-gradient(90deg, var(--pink), var(--purple));
-      border: none;
-      padding: 10px 24px;
-      border-radius: 50px;
-      color: white;
-      font-weight: 600;
-      cursor: pointer;
-    }
-
-    .hero {
-      text-align: center;
-      padding: 100px 20px 80px;
-      position: relative;
-    }
-
-    .welcome {
-      display: inline-block;
-      background: rgba(255,78,205,0.15);
-      border: 2px solid var(--pink);
-      padding: 8px 25px;
-      border-radius: 50px;
-      font-size: 18px;
-      margin-bottom: 20px;
-    }
-
-    .hero h1 {
-      font-size: 62px;
-      line-height: 1.05;
-      font-weight: 700;
-      margin-bottom: 20px;
-    }
-
-    .hero h1 span {
-      background: linear-gradient(90deg, #FF4ECD, #7B5CFF, #3CA6FF);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .hero p {
-      font-size: 22px;
-      max-width: 800px;
-      margin: 0 auto 40px;
-      opacity: 0.95;
-    }
-
-    .buttons {
-      display: flex;
-      gap: 20px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      padding: 16px 36px;
-      font-size: 18px;
-      font-weight: 600;
-      border-radius: 50px;
-      cursor: pointer;
-      text-decoration: none;
-      display: inline-block;
-      transition: all 0.3s;
-    }
-
-    .btn-primary {
-      background: linear-gradient(90deg, var(--pink), var(--purple));
-      color: white;
-      border: none;
-    }
-
-    .btn-primary:hover {
-      transform: scale(1.05);
-    }
-
-    .btn-secondary {
-      background: transparent;
-      color: white;
-      border: 2px solid var(--cyan);
-    }
-
-    .btn-secondary:hover {
-      background: var(--cyan);
-      color: black;
-    }
-
-    .carrinho-icon {
-      position: relative;
-      font-size: 28px;
-      cursor: pointer;
-    }
-
-    .cart-count {
-      position: absolute;
-      top: -8px;
-      right: -10px;
-      background: var(--pink);
-      color: white;
-      font-size: 14px;
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-    }
-
-    /* Carrinho lateral */
-    #carrinho {
-      position: fixed;
-      top: 0;
-      right: -400px;
-      width: 380px;
-      height: 100vh;
-      background: rgba(20, 5, 40, 0.98);
-      transition: right 0.4s ease;
-      z-index: 1000;
-      padding: 30px 25px;
-      overflow-y: auto;
-    }
-
-    #carrinho.open { right: 0; }
-  </style>
-</head>
-<body>
-
-  <!-- HEADER -->
-  <div class="header">
-    <div class="logo">Hardy Store</div>
-    
-    <div class="nav">
-      <a href="#" class="active">Início</a>
-      <a href="#">Loja</a>
-      <a href="#">Sobre</a>
-      <a href="#">Termos</a>
-      <a href="#">Contato</a>
+    <!-- ITEM -->
+    <div class="card">
+      <img src="https://tr.rbxcdn.com/heartblade.png" class="item-img">
+      <h3>Heartblade</h3>
+      <p class="raridade">Godly</p>
+      <span class="preco">R$ 249,90</span>
+      <button onclick="addToCart('Heartblade', 249.90)">Adicionar</button>
     </div>
 
-    <div style="display:flex; align-items:center; gap:25px;">
-      <div class="carrinho-icon" onclick="toggleCarrinho()">
-        🛒 <span class="cart-count" id="cart-count">0</span>
-      </div>
-      <button onclick="alert('Em breve!')">Entrar</button>
+    <div class="card">
+      <img src="https://tr.rbxcdn.com/sugar.png" class="item-img">
+      <h3>Sugar</h3>
+      <p class="raridade lend">Lendário</p>
+      <span class="preco">R$ 159,90</span>
+      <button onclick="addToCart('Sugar', 159.90)">Adicionar</button>
     </div>
+
+    <div class="card">
+      <img src="https://tr.rbxcdn.com/batwing.png" class="item-img">
+      <h3>Batwing</h3>
+      <p class="raridade">Godly</p>
+      <span class="preco">R$ 219,90</span>
+      <button onclick="addToCart('Batwing', 219.90)">Adicionar</button>
+    </div>
+
   </div>
-
-  <!-- HERO -->
-  <div class="hero">
-    <div class="welcome">✨ Bem-vindo à nossa lojinha ❤️</div>
-    
-    <h1>
-      Os melhores itens de<br>
-      <span>Murder Mystery 2</span><br>
-      com os melhores preços
-    </h1>
-    
-    <p>
-      Itens raros, godlys, ancients e sets exclusivos. Entrega em até 24h,<br>
-      suporte dedicado e a maior segurança em cada negociação.
-    </p>
-
-    <div class="buttons">
-      <a href="#" class="btn btn-primary" onclick="verProdutos()">Ver produtos →</a>
-      <a href="https://discord.gg/" target="_blank" class="btn btn-secondary">Entrar no Discord</a>
-    </div>
-  </div>
-
-  <!-- CARRINHO -->
-  <div id="carrinho">
-    <h2 style="margin-bottom:25px;">🛒 Seu Carrinho</h2>
-    <div id="cart-items" style="min-height:300px;"></div>
-    
-    <div style="margin-top:30px; font-size:24px; text-align:center;">
-      Total: R$ <span id="cart-total">0,00</span>
-    </div>
-    
-    <button onclick="finalizarPedido()" style="width:100%; margin-top:20px; padding:18px; background:linear-gradient(90deg,#00ff88,#00cc66); border:none; border-radius:50px; font-size:18px; font-weight:700; color:black;">
-      Finalizar Pedido
-    </button>
-    
-    <button onclick="toggleCarrinho()" style="width:100%; margin-top:10px; padding:14px; background:transparent; border:2px solid #666; color:white; border-radius:50px;">
-      Fechar
-    </button>
-  </div>
-
-  <script>
-    let cart = [];
-
-    function addToCart(name, price) {
-      cart.push({ name, price });
-      updateCart();
-      alert(`${name} foi adicionado ao carrinho! 💖`);
-    }
-
-    function updateCart() {
-      const itemsDiv = document.getElementById('cart-items');
-      itemsDiv.innerHTML = '';
-      let total = 0;
-
-      cart.forEach((item, i) => {
-        total += item.price;
-        const div = document.createElement('div');
-        div.style.cssText = 'display:flex; justify-content:space-between; padding:12px 0; border-bottom:1px solid rgba(255,255,255,0.1);';
-        div.innerHTML = `
-          <span>${item.name}</span>
-          <span>R$ ${item.price.toFixed(2)}</span>
-        `;
-        itemsDiv.appendChild(div);
-      });
-
-      document.getElementById('cart-total').textContent = total.toFixed(2);
-      document.getElementById('cart-count').textContent = cart.length;
-    }
-
-    function toggleCarrinho() {
-      const cartEl = document.getElementById('carrinho');
-      cartEl.classList.toggle('open');
-    }
-
-    function finalizarPedido() {
-      if (cart.length === 0) {
-        alert("Seu carrinho está vazio!");
-        return;
-      }
-      alert("✅ Pedido finalizado com sucesso!\n\nEntraremos em contato via WhatsApp ou Discord em breve.");
-      cart = [];
-      updateCart();
-      toggleCarrinho();
-    }
-
-    function verProdutos() {
-      alert("Em breve a seção completa de produtos estará aqui!\n\nPor enquanto você pode adicionar itens manualmente no código (se quiser, me avise que eu adiciono vários godlys).");
-      // Aqui você pode fazer window.location = "#produtos" depois que criar a seção
-    }
-
-    // Inicia o carrinho vazio
-    window.onload = () => {
-      updateCart();
-    };
-  </script>
-</body>
-</html>
+</section>
